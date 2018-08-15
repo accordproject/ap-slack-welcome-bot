@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const qs = require('querystring');
 const express = require('express');
 const bodyParser = require('body-parser');
 const onboard = require('./onboard');
@@ -54,13 +54,14 @@ app.post('/events', (req, res) => {
  * verification token before continuing.
  */
 app.post('/interactive-message', (req, res) => {
-  const { token, user, team } = JSON.parse(req.body.payload);
-  if (token === process.env.SLACK_VERIFICATION_TOKEN) {
-    // simplest case with only a single button in the application
-    // check `callback_id` and `value` if handling multiple buttons
-    onboard.accept(user.id, team.id);
-    res.send({ text: 'Thank you! The Terms of Service have been accepted.' });
-  } else { res.sendStatus(500); }
+  const { token, user_id, team_id } = req.body;
+  // if (token === process.env.SLACK_VERIFICATION_TOKEN) {
+  //   // simplest case with only a single button in the application
+  //   // check `callback_id` and `value` if handling multiple buttons
+  //   onboard.accept(user.id, team.id);
+  //   res.send({ text: 'Thank you! The Terms of Service have been accepted.' });
+  // } else { res.sendStatus(500); }
+  res.send(onboard.message);
 });
 
 app.listen(process.env.PORT, () => {
