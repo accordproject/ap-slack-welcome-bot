@@ -51,9 +51,14 @@ To join, simply introduce yourself in the corresponding channel.`
       text: '#ventureandtokens-wg. https://accordproject.org/working-groups/venture'
     },
     {
-      title: 'Open Data & Standards',
+      title: 'Dispute Resolution',
       color: '#edcd5a',
-      text: '#opendatastandards-wg'
+      text: '#disputeresolution-wg'
+    },
+    {
+      title: 'Real Estate',
+      color: '#edcd5a',
+      text: '#realestate-wg'
     },
     {
       title: 'Technology',
